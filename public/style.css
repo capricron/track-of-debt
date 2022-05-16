@@ -1,0 +1,142 @@
+.navbar{
+    background-color: #0085FF !important;
+}
+
+body{
+    background-color: black !important;
+    color: white;
+}
+
+img{
+    width: 100px;
+    border-radius: 50%;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.tabel{
+    color: black;
+}
+
+.judul{
+    padding-top: 2000px !important;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+
+
+.collapse{
+    position: relative !important;
+}
+
+.wc{
+    float: left;
+}
+
+.acc{
+    margin-right: 20px;
+}
+
+.add{
+    font-weight: bold;
+    padding-top: 5px;
+    width: 120px;
+    height: 40px;
+    background-color: #22C8EC;
+    margin-top: 25px;
+    margin-right: 250px;
+    border-radius: 10px;
+}
+
+a .add:hover{
+    margin-top: 30px;
+    box-shadow: 5px 5px #75cde0;
+    color: black;
+}
+
+.salam{
+    margin-top: 20px;
+}
+
+.tabel{
+    overflow: auto;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    background-color: #13D6D6;
+}
+
+.konten{
+    overflow: auto;
+    margin: auto;
+    width: 95%;
+}
+
+table{
+    padding-top: 200px !important;
+    background-color: white;
+}
+
+th, td{
+    padding: 10px;
+}
+
+.kosong{
+    margin-top: 50px;
+}
+
+.merah{
+    height: 20px;
+    width: 20px;
+    float: left;
+    background-color: red;
+}
+
+.kuning{
+    height: 20px;
+    width: 20px;
+    float: left;
+    background-color: yellow;
+}
+
+.hijau{
+    height: 20px;
+    width: 20px;
+    float: left;
+    background-color:  #12fc54;
+}
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.6;
+    filter: invert(0.8);
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1
+  }
+
+@media (max-width:1000px) {
+    img{
+        width: 50px;
+    }
+    .judul{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .acc{
+        margin-top: 20px;
+    }
+
+}
