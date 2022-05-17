@@ -92,7 +92,6 @@ class TaskController extends Controller
         ]);
     }
 
-    
     public function checked(Request $request)
     {
         // return $request->check;

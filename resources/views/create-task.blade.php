@@ -35,7 +35,7 @@
           <br>
           <br>
           <input class="no-outline" type="number" name="jumlah" placeholder="Total loan" required>
-         
+          <input class="no-outline" type="number" name="kontak" placeholder="Phone number" required>
           <input class="no-outline" type="number" name="no-ktp" placeholder="ID number" required>
           
           <input class="no-outline" type="text" name="alamat" placeholder="Address" required>

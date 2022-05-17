@@ -21,12 +21,13 @@ use App\Http\Controllers\{
 // Route::get('/', function () {
 //     return view('index');
 // });
+
 Route::group(['middleware' => 'login'], function () {
-    Route::resource('/task', DebtController::class);
-    Route::resource('/', DebtController::class);
+    Route::resource('/task', TaskController::class);
+    Route::resource('/', TaskController::class);
     Route::get('/logout', [LoginController::class, 'logout']);
-    Route::post('/modif', [DebtController::class, 'modif']);
-    Route::put('/modif/{id}', [DebtController::class, 'checked']);
+    Route::post('/modif', [TaskController::class, 'modif']);
+    Route::put('/modif/{id}', [TaskController::class, 'checked']);
 });
 
 Route::get('/login', [LoginController::class, "index"]);
