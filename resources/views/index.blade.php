@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
     <title>Pantau Tugas</title>
   </head>
   <body>
@@ -75,24 +78,48 @@
                 </a>
             </div>
 
+            {{-- Modal --}}
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Modal --}}
             <div class="task-list"> 
             @empty($debts){
                 <h3>You don't have any tasks</h3>
             }
             @endforelse
-
+            
             @foreach($debts as $utang)
             <div class="task">
-                <div onclick="ngetest('mentu-{{$utang->id}}')" class="task-progress" >     
-                    <div class="status"
-                        @if($utang->tanggal == date('Y-m-d'))
-                             {{ " style = background-color:#ebeb34; " }}
+                <div data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})" class="task-progress" >     
+                    <div id='status-{{$utang->id}}' class="status"
+                        @if(($utang->checked >= 1) || ($utang->tanggal > date('Y-m-d')) )
+                             {{ " style = background-color:#59eb34; " }}
                         @elseif($utang->tanggal < date('Y-m-d'))
                              {{ " style = background-color:#eb5334; " }}
-                        @elseif($utang->tanggal > date('Y-m-d'))
-                             {{ " style = background-color:#59eb34; " }}
+                        @elseif($utang->tanggal == date('Y-m-d'))
+                             {{ " style = background-color:#ebeb34; " }}
                         @endif
-                    ></div><br>
+                    ></div>
+                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                    <br>
                     <h4>{{$utang->nama}}</h4>
                     <p>Date: {{date('d M Y', strtotime($utang->tanggal))}}</p>
                     <p>Time: {{$utang->jam}}</p>
@@ -151,8 +178,12 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <script src="script.js"></script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -33,18 +33,7 @@ const time = () => {
 
 setInterval(() => {
     time();
-}, 0);
-
-
-console.log(window.innerWidth);
-
-if(window.innerWidth > 1000){
-    let kanan = document.getElementById('kanan');
-
-    kanan.style.position = 'absolute';
-    kanan.style.right = '0';
-}
-
+}, 1000);
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "50%";
@@ -68,6 +57,17 @@ function cek(id){
     .catch(function (error) {
         console.log(error);
     });
+
+    window.location.hash = `#status-${id}`;
+    window.location.reload(true);
 }
 
-// ucapan salam
+function modal(id){
+    // axios.get(`/${id}`).then(function (response) {
+    //     console.log(response);
+    //     document.getElementById("modal-title").innerHTML = response.data.title;
+    //     document.getElementById("modal-body").innerHTML = response.data.body;
+    //     document.getElementById("modal-footer").innerHTML = response.data.footer;
+    // })
+    console.log(`modal ${id}`);
+}
