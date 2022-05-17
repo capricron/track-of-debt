@@ -32,7 +32,7 @@
                     <div class="wc acc ">
                         <h2>{{auth()->user()->username}}</h2>
 
-                        <a href="logout.php">
+                        <a href="/logout">
                             <p>Log Out</p>
                         </a>
                     </div>
@@ -79,13 +79,12 @@
                     <td class='text-center'>{{date('d M Y', strtotime($tugas->tanggal))}}</td>
                     <td class='text-center'>{{$tugas->jam}}</td>
                     <td class='text-center'>
-                        <input type='checkbox' 
+                        <input id="check {{$tugas->id}}" type='checkbox' 
                             @if ($tugas->checked >= 1)  
-                                {{'checked'}}  
-                            @else 
-                                {{'none'}} 
+                                {{'checked'}}
                             @endif 
-                        onclick='return false;' ></td>
+                        onclick='cek({{$tugas->id}})'>
+                    </td>
                     <td class='text-center'>
                         <form style="display:inline" action="/modif" method="post">
                             @csrf
@@ -109,6 +108,7 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

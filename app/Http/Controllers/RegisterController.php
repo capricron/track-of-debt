@@ -13,7 +13,7 @@ class RegisterController extends Controller
 
     public function store(Request $request){
         $validate = $request->validate([
-            'username' => 'required',
+            'username' => 'required|unique:users',
             'password' => 'required',
         ]);
 
@@ -22,7 +22,7 @@ class RegisterController extends Controller
         // return $validate;
         User::create($validate);
 
-        $request->session()->flash('success', 'Berhasil mendaftar');
+        $request->session()->flash('success', 'Berhasil mendaftar silahkan login');
 
         return redirect('/login');
     }

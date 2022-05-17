@@ -12,7 +12,6 @@
 
     <title>Detail Tugas</title>
   
-  
    </head>
 
   <body>
@@ -34,10 +33,6 @@
           <br>
           <p>Deadline Jam</p>
           <input type="time" class="x no-outline" name="jam" value="{{ $task->jam }}" required>
-          <br>
-          <br>
-          <label class="check" for="check">Apakah Anda sudah mengerjakan?</label>
-          <input type='checkbox' <?= ( $task->checked  >= 1  ? 'checked' : 'none')?> name="check" >
           <br>
           <br>
           <button class="submit" name="submit" type="submit" >Update</button>

@@ -9,14 +9,24 @@ setInterval(() => {
     }
 
     time()
-}, 0);
+}, 1000);
 
-
-console.log(window.innerWidth);
 
 if(window.innerWidth > 1000){
     let kanan = document.getElementById('kanan');
 
     kanan.style.position = 'absolute';
     kanan.style.right = '0';
+}
+
+function cek(id){
+    axios.put(`/modif/${id}`,{
+        id,
+        check: document.getElementById(`check ${id}`).checked
+    }).then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 }

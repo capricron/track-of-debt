@@ -8,6 +8,16 @@ a{
     text-decoration: none;
 }
 
+.alert{
+    width: 90% !important;
+}
+
+.close span{
+    margin-top: -10px;
+    position: absolute;
+    right: 5px !important;
+}
+
 img{
     margin-top: 30px;
     width: 150px;
