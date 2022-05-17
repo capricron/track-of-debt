@@ -44,7 +44,7 @@
     </nav>
     <div class="content">
         <div class="greet">
-            <h1>Good {{$waktu}} {{auth()->user()->username}}!</h1>
+            <h1>Good <span id="salam"></span> {{auth()->user()->username}}!</h1>
             <h3 id="jam"></h3>
         </div>
     </div>
@@ -83,7 +83,7 @@
 
             @foreach($debts as $utang)
             <div class="task">
-                <div id="mentu" class="task-progress">
+                <div onclick="ngetest('mentu-{{$utang->id}}')" class="task-progress" >     
                     <div class="status"
                         @if($utang->tanggal == date('Y-m-d'))
                              {{ " style = background-color:#ebeb34; " }}
