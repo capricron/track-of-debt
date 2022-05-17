@@ -58,33 +58,33 @@
                 </a>
             </div>
             <div class="task-list">
-            @foreach($tasks as $tugas)
+            @foreach($debts as $utang)
             <div class="task">
                 <div id="mentu" class="task-progress">
                     <div class="status"
-                        @if($tugas->tanggal == date('Y-m-d'))
+                        @if($utang->tanggal == date('Y-m-d'))
                              {{ " style = background-color:#ebeb34; " }}
-                        @elseif($tugas->tanggal < date('Y-m-d'))
+                        @elseif($utang->tanggal < date('Y-m-d'))
                              {{ " style = background-color:#eb5334; " }}
-                        @elseif($tugas->tanggal > date('Y-m-d'))
+                        @elseif($utang->tanggal > date('Y-m-d'))
                              {{ " style = background-color:#59eb34; " }}
                         @endif
                     ></div><br>
-                    <h4>{{$tugas->nama}}</h4>
-                    <p>Date: {{date('d M Y', strtotime($tugas->tanggal))}}</p>
-                    <p>Time: {{$tugas->jam}}</p>
-                    <input id="check {{$tugas->id}}" type='checkbox' 
-                            @if ($tugas->checked >= 1)  
+                    <h4>{{$utang->nama}}</h4>
+                    <p>Date: {{date('d M Y', strtotime($utang->tanggal))}}</p>
+                    <p>Time: {{$utang->jam}}</p>
+                    <input id="check {{$utang->id}}" type='checkbox' 
+                            @if ($utang->checked >= 1)  
                                 {{'checked'}}
                             @endif 
-                        onclick='cek({{$tugas->id}})'>
+                        onclick='cek({{$utang->id}})'>
                     <div class="button">
                         <form action="/modif" method="post">
                             @csrf
-                            <input type="hidden" name="id" value={{$tugas->id}}>
+                            <input type="hidden" name="id" value={{$utang->id}}>
                             <button type="submit" class="button-edit">Edit</button>
                         </form>
-                        <form action="/task/{{$tugas->id}}" method="post">
+                        <form action="/task/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="button-delete">Delete</button>

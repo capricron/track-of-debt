@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    TaskController,
+    DebtController,
     LoginController,
     RegisterController,
 };
@@ -22,11 +22,11 @@ use App\Http\Controllers\{
 //     return view('index');
 // });
 Route::group(['middleware' => 'login'], function () {
-    Route::resource('/task', TaskController::class);
-    Route::resource('/', TaskController::class);
+    Route::resource('/task', DebtController::class);
+    Route::resource('/', DebtController::class);
     Route::get('/logout', [LoginController::class, 'logout']);
-    Route::post('/modif', [TaskController::class, 'modif']);
-    Route::put('/modif/{id}', [TaskController::class, 'checked']);
+    Route::post('/modif', [DebtController::class, 'modif']);
+    Route::put('/modif/{id}', [DebtController::class, 'checked']);
 });
 
 Route::get('/login', [LoginController::class, "index"]);

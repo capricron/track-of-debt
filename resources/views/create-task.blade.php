@@ -29,7 +29,16 @@
           <input type="date" class="no-outline" name="tanggal" placeholder="dd-mm-yyyy" required>
           <br>
           <br>
-          <input type="time" class="no-outline" name="jam" required>
+          <input class="no-outline" type="text" name="deskripsi" placeholder="Deskripsi" required>
+          <br>
+          <br>
+          <input class="no-outline" type="number" name="jumlah" placeholder="Jumlah Hutang" required>
+          <br>
+          <br>
+          <input class="no-outline" type="number" name="no-ktp" placeholder="Masukan No KTP" required>
+          <br>
+          <br>
+          <input class="no-outline" type="text" name="alamat" placeholder="Masukan Alamat" required>
           <br>
           <br>
           <button class="submit" name="submit" type="submit" >Tambah</button>
