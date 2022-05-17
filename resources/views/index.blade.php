@@ -16,14 +16,14 @@
             <a href="" class="navbar-image">
                 <img src="pp.png" alt="/" class="responsive">
             </a>
-            <div class="">
+            <div class="logout">
                         <h2>{{auth()->user()->username}}</h2>
 
                         <a href="logout.php">
                             <p>Log Out</p>
                         </a>
             </div>
-            <span class="hamburger" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+            <span class="hamburger" style="font-size:30px;cursor:pointer;color:#fff" onclick="openNav()">&#9776;</span>
         </div>
     </nav>
     <div class="content">

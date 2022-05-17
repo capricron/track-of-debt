@@ -2,8 +2,9 @@
 body{
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    background: rgb(210,210,210);
-    background: linear-gradient(356deg, rgba(210,210,210,1) 38%, rgba(255,255,255,1) 100%);
+    background: #3d71de;
+    /* background: rgb(210,210,210);
+    background: linear-gradient(356deg, rgba(210,210,210,1) 38%, rgba(255,255,255,1) 100%); */
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
@@ -22,9 +23,7 @@ opacity: 1
     border-radius: 50%;
     border: 2px solid #ffffff;
 }
-.navbar-parent{
-    background: #2c394b;
-}
+
 .navbar-container{
     display: grid;
     grid-template-columns: auto auto;
@@ -35,9 +34,11 @@ opacity: 1
     display: block;
     align-items: center;
 }
+.logout{
+    display: none;
+}
 .content{
     margin-top: -2px;
-    background: #2c394b;
     padding: 16px;
     border-radius: 0 0 48px 48px;
     text-align: center;
@@ -49,6 +50,11 @@ opacity: 1
 }
 .below{
     padding: 32px;
+    background: #fff;
+    border-radius: 32px 32px 0 0;
+    box-shadow: -1px 29px 101px 21px rgba(0,0,0,0.78);
+    -webkit-box-shadow: -1px 29px 101px 21px rgba(0,0,0,0.78);
+    -moz-box-shadow: -1px 29px 101px 21px rgba(0,0,0,0.78);
 }
 .task-info{
     border-radius: 50px;
@@ -142,7 +148,7 @@ opacity: 1
     grid-template-columns: auto;
     border-radius: 16px;
     padding: 16px;
-    background: #334756;
+    background: #3d71de;
     color: #fff;
 }
 .task-progress h4{
@@ -190,7 +196,7 @@ opacity: 1
 @media screen and (min-width:960px){
     .below{
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
         padding: 64px;
     }
     .hamburger{
@@ -207,152 +213,17 @@ opacity: 1
              -20px -20px 32px #ffffff;
     }
     .task-list{
+        display: grid;
+        grid-template-columns: auto auto;
         padding: 32px;
         border-radius: 50px;
         background: #e0e0e0;
         box-shadow:  20px 20px 32px #b3b3b3,
              -20px -20px 32px #ffffff;
     }
-}
-/* .navbar{
-    background-color: #0085FF !important;
-}
-
-body{
-    background-color: black !important;
-    color: white;
-}
-
-img{
-    width: 100px;
-    border-radius: 50%;
-}
-
-a{
-    color: black;
-    text-decoration: none;
-}
-
-
-.tabel{
-    color: black;
-}
-
-.judul{
-    padding-top: 2000px !important;
-    margin-left: 20px;
-    font-weight: bold;
-    font-size: 50px;
-}
-
-
-
-.collapse{
-    position: relative !important;
-}
-
-.wc{
-    float: left;
-}
-
-.acc{
-    margin-right: 20px;
-}
-
-.add{
-    font-weight: bold;
-    padding-top: 5px;
-    width: 120px;
-    height: 40px;
-    background-color: #22C8EC;
-    margin-top: 25px;
-    margin-right: 250px;
-    border-radius: 10px;
-}
-
-a .add:hover{
-    margin-top: 30px;
-    box-shadow: 5px 5px #75cde0;
-    color: black;
-}
-
-.salam{
-    margin-top: 20px;
-}
-
-.tabel{
-    overflow: auto;
-    padding: 20px;
-    width: 100%;
-    height: auto;
-    background-color: #13D6D6;
-}
-
-.konten{
-    overflow: auto;
-    margin: auto;
-    width: 95%;
-}
-
-table{
-    padding-top: 200px !important;
-    background-color: white;
-}
-
-th, td{
-    padding: 10px;
-}
-
-.kosong{
-    margin-top: 50px;
-}
-
-.merah{
-    height: 20px;
-    width: 20px;
-    float: left;
-    background-color: red;
-}
-
-.kuning{
-    height: 20px;
-    width: 20px;
-    float: left;
-    background-color: yellow;
-}
-
-.hijau{
-    height: 20px;
-    width: 20px;
-    float: left;
-    background-color:  #12fc54;
-}
-
-
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    border-radius: 4px;
-    margin-right: 2px;
-    opacity: 0.6;
-    filter: invert(0.8);
-  }
-  
-  input[type="date"]::-webkit-calendar-picker-indicator:hover {
-    opacity: 1
-  }
-
-@media (max-width:1000px) {
-    img{
-        width: 50px;
+    .task-progress:hover{
+        background: #3a668b;
+        transition: all 0.3s ease-in-out;
+        transform: scale(1.1,1.1);
     }
-    .judul{
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-    .acc{
-        margin-top: 20px;
-    }
-
-} */
+}
