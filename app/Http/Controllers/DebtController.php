@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\{
-    Task,
+    Debt,
     User,               
 };
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class DebtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,22 +17,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        date_default_timezone_set('Asia/Jakarta');
-        $jam = date('H');
-
-        if( $jam > 5 && $jam < 12 ){
-            $waktu =  'morning';
-        }else if ($jam > 11 && $jam < 15){
-            $waktu =  'afternoon';
-        }else if ($jam > 14 && $jam < 18){
-            $waktu =  'evening';
-        }else if ( $jam > 17 && $jam > 6){
-            $waktu =  'night';
-        };
-
         return view('index', [
-            'waktu' => $waktu,
-            'tasks' => Task::where('user_id', auth()->id())->orderBy('tanggal', 'asc')->get(),
+            'debts' => Debt::where('user_id', auth()->id())->orderBy('tanggal', 'asc')->get(),
         ]);
     }
 
@@ -54,60 +40,65 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validate = $request->validate([
             'nama' => 'required',
             'tanggal' => 'required',
-            'jam' => 'required',
+            'deskripsi' => 'required',
+            'jumlah' => 'required',
+            'no-ktp' => 'required',
+            'alamat' => 'required',
         ]);
 
         $validate['user_id'] = auth()->id();
 
-        Task::create($validate);
+        Debt::create($validate);
 
-        return redirect('/')->with('success', 'Berhasil menambahkan task');
+        return redirect('/')->with('success', 'Berhasil menambahkan Debt');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Debt  $Debt
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($id)
     {
-        //
+        return Debt::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Debt  $Debt
      * @return \Illuminate\Http\Response
      */
     public function modif(Request $request)
     {
-        $task = Task::find($request->id);
-        return view('modif-task', [
-            'task' => $task,
+        $Debt = Debt::find($request->id);
+        return view('modif-Debt', [
+            'debt' => $Debt,
         ]);
     }
 
+    
     public function checked(Request $request)
     {
         // return $request->check;
-        $task = Task::find($request->id);
-        $task->checked = $request->check;
-        $task->save();
+        $Debt = Debt::find($request->id);
+        $Debt->checked = $request->check;
+        $Debt->save();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Debt  $Debt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Debt $Debt)
     {
         $validate = $request->validate([
             'nama' => 'required',
@@ -123,20 +114,20 @@ class TaskController extends Controller
 
         $validate['user_id'] = auth()->id();
 
-        $task->update($validate);
+        $Debt->update($validate);
 
-        return redirect('/')->with('success', 'Berhasil mengubah task');
+        return redirect('/')->with('success', 'Berhasil mengubah Debt');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Debt  $Debt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(Debt $Debt)
     {
-        $task->delete();
-        return redirect('/')->with('success', 'Berhasil menghapus task');
+        $Debt->delete();
+        return redirect('/')->with('success', 'Berhasil menghapus Debt');
     }
 }

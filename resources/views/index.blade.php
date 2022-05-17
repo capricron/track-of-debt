@@ -6,114 +6,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
     <title>Pantau Tugas</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="pp.png" alt="">
-                <span class="judul">Pantau Tugas</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div id="kanan">
-                    <a href="">
-                        <div class="wc add text-center">
-                            <a href="/create">
-                                <p>+ Add Tugas</p>
-                            </a>
-                        </div>
-                    </a>
-                    <div class="wc acc ">
-                        <h2>{{auth()->user()->username}}</h2>
+    <nav class="navbar-parent">
+        <div class="navbar-container">
+            <div class="app-name">
+                <a href="" class="navbar-image">
+                    <img src="pp.png" alt="/" class="responsive">
+                </a>
+                <h1>Track of Debts</h1>
+            </div>
+            <div class="logout-container" id="mySidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="logout">
+                            <h2>{{auth()->user()->username}}</h2>
 
-                        <a href="/logout">
-                            <p>Log Out</p>
-                        </a>
-                    </div>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
+                </div>
+
+            </div>
+            <div class="logoutDesktop">
+                            <h5>{{auth()->user()->username}}</h5>
+
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
+                </div>
+            <span class="hamburger" style="font-size:30px;cursor:pointer;color:#fff" onclick="openNav()">&#9776;</span>
+        </div>
+        
+    </nav>
+    <div class="content">
+        <div class="greet">
+            <h1>Good <span id="salam"></span> {{auth()->user()->username}}!</h1>
+            <h3 id="jam"></h3>
+        </div>
+    </div>
+    <div class="below">
+        <div class="task-info">
+            <h1>Task Info</h1>
+            <div class="task-info-content">
+                
+                <div class="info">
+                    <div class="merah"></div>
+                    <p>Skipped task</p>
+                </div>
+                <div class="info">
+                    <div class="kuning"></div>
+                    <p>Today task</p>
+                </div>
+                <div class="info">
+                    <div class="hijau"></div>
+                    <p>Next task</p>
                 </div>
             </div>
         </div>
-    </nav>
+        <div class="active-task">
+            <div class="header-active-task">
+                <h1>Active Task</h1>
+                <a href="/create" class="add-task">
+                    <p>+ Add Task</p>
+                </a>
+            </div>
 
-    <div class="konten">
-        <div class="salam container">
-            <h1>Selamat {{$waktu}} {{auth()->user()->username}}</h1>
-            <h3 id="jam"></h3>
-        </div>
-        <br>
-        <div class="tabel container">
-            <span><div class="merah"></div>: Tugas telah melewati tanggal deadline</p>
-            <p><div class="kuning"></div>: Tugas hari ini</p>
-            <p><div class="hijau"></div>: Tugas yang akan datang</p>
-            <br>
-            <div class="konten">
-            <table border='1' style="width: 100%">
-                <tr>
-                    <th>Tugas</th>
-                    <th class='text-center'>Deadline Tanggal</th>
-                    <th class='text-center'>Deadline Jam</th>
-                    <th class='text-center'>Checked</th>
-                    <th></th>
-                </tr>
-                @empty($tasks){
-                    <td colspan="1000"> <h1 class="kosong text-center">Yatta! Kamu tidak punya tugas untuk di selesaikan</h1> </td>
-                }
-                @endforelse
-                @foreach($tasks as $tugas)
-                <tr
-                        @if($tugas->tanggal == date('Y-m-d'))
-                             {{ " style = background-color:#ebeb34; " }}
-                        @elseif($tugas->tanggal < date('Y-m-d'))
-                             {{ " style = background-color:#eb5334; " }}
-                        @elseif($tugas->tanggal > date('Y-m-d'))
+            {{-- Modal --}}
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="" id="modal-date">Date: <span></span></div>
+                        <div class="" id="modal-deskripsi">Description: <span></span></div>
+                        <div class="" id="modal-total">Total loan: <span></span></div>
+                        <div class="" id="modal-contact">Phone number: <span></span></div>
+                        <div class="" id="modal-number">ID number: <span></span></div>
+                        <div class="" id="modal-address">Address: <span></span></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Modal --}}
+            <div class="task-list"> 
+            @empty($debts){
+                <h3>You don't have any tasks</h3>
+            }
+            @endforelse
+            
+            @foreach($debts as $utang)
+            <div class="task">
+                <div data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})" class="task-progress" >     
+                    <div id='status-{{$utang->id}}' class="status"
+                        @if(($utang->checked >= 1) || ($utang->tanggal > date('Y-m-d')) )
                              {{ " style = background-color:#59eb34; " }}
+                        @elseif($utang->tanggal < date('Y-m-d'))
+                             {{ " style = background-color:#eb5334; " }}
+                        @elseif($utang->tanggal == date('Y-m-d'))
+                             {{ " style = background-color:#ebeb34; " }}
                         @endif
-                >
-                    <td class='text-center'>{{$tugas->nama}}</td>
-                    <td class='text-center'>{{date('d M Y', strtotime($tugas->tanggal))}}</td>
-                    <td class='text-center'>{{$tugas->jam}}</td>
-                    <td class='text-center'>
-                        <input id="check {{$tugas->id}}" type='checkbox' 
-                            @if ($tugas->checked >= 1)  
+                    ></div>
+                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                    <br>
+                    <h4>{{$utang->nama}}</h4>
+                    <p>Date: {{date('d M Y', strtotime($utang->tanggal))}}</p>
+                    <p>Time: {{$utang->jam}}</p>
+                    <input id="check {{$utang->id}}" type='checkbox' 
+                            @if ($utang->checked >= 1)  
                                 {{'checked'}}
                             @endif 
-                        onclick='cek({{$tugas->id}})'>
-                    </td>
-                    <td class='text-center'>
-                        <form style="display:inline" action="/modif" method="post">
+                        onclick='cek({{$utang->id}})'>
+                    <div class="button">
+                        <form action="/modif" method="post">
                             @csrf
-                            <input type="hidden" name="id" value={{$tugas->id}}>
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <input type="hidden" name="id" value={{$utang->id}}>
+                            <button type="submit" class="button-edit">Edit</button>
                         </form>
-                        <form style="display:inline" action="/task/{{$tugas->id}}" method="post">
+                        <form action="/task/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="button-delete">Delete</button>
                         </form>
-                    </td>
-                </style=>
-                @endforeach
-            </table>
+                    </div>
+                </div>
+            </div>
+            @endforeach
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <script src="script.js"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    -->
+
   </body>
 </html>

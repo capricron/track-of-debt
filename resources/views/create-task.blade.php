@@ -16,7 +16,40 @@
    </head>
 
   <body>
-    <div class="gambar container text-center">
+    <div class="parent">
+      <div class="container-card">
+        <a href="/"><i class="arrow left"></i></a>
+        <h1>Create new task</h1>
+        <form class="text-center login" action="/task" method="post">
+          @csrf
+          <input class="no-outline" type="text" name="nama" placeholder="Task name" required>
+          <br>
+          <br>
+          <input type="date" class="no-outline" name="tanggal" placeholder="dd-mm-yyyy" required>
+       
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-create">
+          <input class="no-outline" type="text" name="deskripsi" placeholder="Description" required>
+          <br>
+          <br>
+          <input class="no-outline" type="number" name="jumlah" placeholder="Total loan" required>
+          <input class="no-outline" type="number" name="kontak" placeholder="Phone number" required>
+          <input class="no-outline" type="number" name="no-ktp" placeholder="ID number" required>
+          
+          <input class="no-outline" type="text" name="alamat" placeholder="Address" required>
+          <br>
+          <br>
+          <button class="submit" name="submit" type="submit" >Add</button>
+        </form>
+      </div>
+    </div>
+  </body>
+
+
+
+    <!-- <div class="gambar container text-center">
     <img src="../pp.png" alt="" srcset="" class="text-center">
     </div>
     <div class="form">
@@ -29,13 +62,22 @@
           <input type="date" class="no-outline" name="tanggal" placeholder="dd-mm-yyyy" required>
           <br>
           <br>
-          <input type="time" class="no-outline" name="jam" required>
+          <input class="no-outline" type="text" name="deskripsi" placeholder="Deskripsi" required>
+          <br>
+          <br>
+          <input class="no-outline" type="number" name="jumlah" placeholder="Jumlah Hutang" required>
+          <br>
+          <br>
+          <input class="no-outline" type="number" name="no-ktp" placeholder="Masukan No KTP" required>
+          <br>
+          <br>
+          <input class="no-outline" type="text" name="alamat" placeholder="Masukan Alamat" required>
           <br>
           <br>
           <button class="submit" name="submit" type="submit" >Tambah</button>
 
         </form>
-    </div>
+    </div> -->
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

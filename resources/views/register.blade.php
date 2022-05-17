@@ -16,17 +16,36 @@
    </head>
 
   <body>
-    <div class="gambar container text-center">
-    <img src="../pp.png" alt="" srcset="" class="text-center">
+  <div class="parent">
+      <div class="container-card">
+        <img src="../pp.png" alt="" class="responsive">
+        <h2>Register</h2>
+        <form class="text-center login" action="/register" method="post">
+            @csrf
+          <input class="no-outline" type="text" name="username" placeholder="username" required>
+          <br>
+          <br>
+          <input type="password" class="no-outline" name="password" placeholder="password" required>
+          <br>
+          <br>
+          <button class="submit" name="submit" type="submit" >Register</button>
+
+        </form>
+        <div class="line"></div>
+        <a class="text-center" href="../login">
+          <p>Sudah Punya Akun?</p>
+        </a>
+      </div>
     </div>
-    <div class="form">
+  
+    <!-- <div class="form">
         <h1 class="text-center">Daftar Dulu Bos</h1>
         <a class="text-center" href="../login">
           <p>Sudah Punya Akun?</p>
         </a>
         <form class="text-center login" action="/register" method="post">
             @csrf
-          <input class="no-outline" type="text" name="username" placeholder="username" r0equired>
+          <input class="no-outline" type="text" name="username" placeholder="username" required>
           <br>
           <br>
           <input type="password" class="no-outline" name="password" placeholder="password" required>
@@ -35,7 +54,7 @@
           <button class="submit" name="submit" type="submit" >Daftar</button>
 
         </form>
-    </div>
+    </div> -->
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
