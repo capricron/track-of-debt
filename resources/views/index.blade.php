@@ -19,7 +19,7 @@
             <a href="" class="navbar-image">
                 <img src="pp.png" alt="/" class="responsive">
             </a>
-
+            <h1>Track of debts</h1>
             <div class="logout-container" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="logout">
@@ -35,9 +35,10 @@
             <div class="logoutDesktop">
                             <h5>{{auth()->user()->username}}</h5>
 
-                            <a href="logout.php">
-                                <p>Log Out</p>
-                            </a>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
                 </div>
             <span class="hamburger" style="font-size:30px;cursor:pointer;color:#fff" onclick="openNav()">&#9776;</span>
         </div>
