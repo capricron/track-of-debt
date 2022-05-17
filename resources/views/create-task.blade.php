@@ -22,7 +22,7 @@
         <h1>Create new task</h1>
         <form class="text-center login" action="/task" method="post">
           @csrf
-          <input class="no-outline" type="text" name="nama" placeholder="Nama Tugas" required>
+          <input class="no-outline" type="text" name="nama" placeholder="Task name" required>
           <br>
           <br>
           <input type="date" class="no-outline" name="tanggal" placeholder="dd-mm-yyyy" required>
@@ -31,19 +31,17 @@
     </div>
     <div class="content">
       <div class="content-create">
-          <input class="no-outline" type="text" name="deskripsi" placeholder="Deskripsi" required>
+          <input class="no-outline" type="text" name="deskripsi" placeholder="Description" required>
           <br>
           <br>
-          <input class="no-outline" type="number" name="jumlah" placeholder="Jumlah Hutang" required>
+          <input class="no-outline" type="number" name="jumlah" placeholder="Total loan" required>
+         
+          <input class="no-outline" type="number" name="no-ktp" placeholder="ID number" required>
+          
+          <input class="no-outline" type="text" name="alamat" placeholder="Address" required>
           <br>
           <br>
-          <input class="no-outline" type="number" name="no-ktp" placeholder="Masukan No KTP" required>
-          <br>
-          <br>
-          <input class="no-outline" type="text" name="alamat" placeholder="Masukan Alamat" required>
-          <br>
-          <br>
-          <button class="submit" name="submit" type="submit" >Tambah</button>
+          <button class="submit" name="submit" type="submit" >Add</button>
         </form>
       </div>
     </div>

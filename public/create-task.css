@@ -78,8 +78,38 @@ body{
     border: none;
     border-bottom: 2px solid rgb(0, 0, 0);
 }
+.submit{
+    padding: 8px 16px;
+    border: none;
+    background: #3d71de;
+    color: #fff;
+    border-radius: 16px;
+}
+.submit:hover{
+    background: #fff;
+    border: 1px solid #3d71de;
+    color:#3d71de;
+    transition: all 0.2s ease;
+
+}
 @media screen and (min-width: 601px) {
-    
+    .parent{
+        padding: 64px;
+    }
+    .content{
+        padding: 64px;
+    }
+    .parent input[type=date]{
+        display: flex;
+        justify-content: flex-start;
+        width: 50%;
+    }
+    .content-create{
+        display: grid;
+        grid-template-columns: auto auto;
+        row-gap: 40px;
+        column-gap: 20px;
+    }
 }
 /* input {
     outline: 0;
