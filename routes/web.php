@@ -24,7 +24,7 @@ use App\Http\Controllers\{
 Route::resource('/task', TaskController::class)->middleware('login');
 Route::resource('/', TaskController::class)->middleware('login');
 
-Route::post('/edit', [TaskController::class, 'modif']);
+Route::post('/modif', [TaskController::class, 'modif']);
 
 Route::get('/login', [LoginController::class, "index"]);
 Route::post('/login', [LoginController::class, "authenticate"]);

@@ -11,7 +11,94 @@
     <title>Pantau Tugas</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar-parent">
+        <div class="navbar-container">
+            <a href="" class="navbar-image">
+                <img src="pp.png" alt="/" class="responsive">
+            </a>
+            <div class="">
+                        <h2>{{auth()->user()->username}}</h2>
+
+                        <a href="logout.php">
+                            <p>Log Out</p>
+                        </a>
+            </div>
+            <span class="hamburger" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="greet">
+            <h1>Good {{$waktu}} {{auth()->user()->username}}!</h1>
+            <h3 id="jam"></h3>
+        </div>
+    </div>
+    <div class="below">
+        <div class="task-info">
+            <h1>Task Info</h1>
+            <div class="task-info-content">
+                <div class="info">
+                    <div class="merah"></div>
+                    <p>Skipped task</p>
+                </div>
+                <div class="info">
+                    <div class="kuning"></div>
+                    <p>Today task</p>
+                </div>
+                <div class="info">
+                    <div class="hijau"></div>
+                    <p>Next task</p>
+                </div>
+            </div>
+        </div>
+        <div class="active-task">
+            <div class="header-active-task">
+                <h1>Active Task</h1>
+                <a href="/create" class="add-task">
+                    <p>+ Add Task</p>
+                </a>
+            </div>
+            <div class="task-list">
+            @foreach($tasks as $tugas)
+            <div class="task">
+                <div class="task-progress">
+                    <div class="status"
+                        @if($tugas->tanggal == date('Y-m-d'))
+                             {{ " style = background-color:#ebeb34; " }}
+                        @elseif($tugas->tanggal < date('Y-m-d'))
+                             {{ " style = background-color:#eb5334; " }}
+                        @elseif($tugas->tanggal > date('Y-m-d'))
+                             {{ " style = background-color:#59eb34; " }}
+                        @endif
+                    ></div><br>
+                    <h4>{{$tugas->nama}}</h4>
+                    <p>Date: {{date('d M Y', strtotime($tugas->tanggal))}}</p>
+                    <p>Time: {{$tugas->jam}}</p>
+                    <input type='checkbox' 
+                                @if ($tugas->checked >= 1)  
+                                    {{'checked'}}  
+                                @else 
+                                    {{'none'}} 
+                                @endif 
+                                onclick='return false;' >
+                    <div class="button">
+                        <form action="/modif" method="post">
+                            @csrf
+                            <input type="hidden" name="id" value={{$tugas->id}}>
+                            <button type="submit" class="button-edit">Edit</button>
+                        </form>
+                        <form action="/task/{{$tugas->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="button-delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="pp.png" alt="">
@@ -39,71 +126,7 @@
                 </div>
             </div>
         </div>
-    </nav>
-
-    <div class="konten">
-        <div class="salam container">
-            <h1>Selamat {{$waktu}} {{auth()->user()->username}}</h1>
-            <h3 id="jam"></h3>
-        </div>
-        <br>
-        <div class="tabel container">
-            <span><div class="merah"></div>: Tugas telah melewati tanggal deadline</p>
-            <p><div class="kuning"></div>: Tugas hari ini</p>
-            <p><div class="hijau"></div>: Tugas yang akan datang</p>
-            <br>
-            <div class="konten">
-            <table border='1' style="width: 100%">
-                <tr>
-                    <th>Tugas</th>
-                    <th class='text-center'>Deadline Tanggal</th>
-                    <th class='text-center'>Deadline Jam</th>
-                    <th class='text-center'>Checked</th>
-                    <th></th>
-                </tr>
-                @empty($tasks){
-                    <td colspan="1000"> <h1 class="kosong text-center">Yatta! Kamu tidak punya tugas untuk di selesaikan</h1> </td>
-                }
-                @endforelse
-                @foreach($tasks as $tugas)
-                <tr
-                        @if($tugas->tanggal == date('Y-m-d'))
-                             {{ " style = background-color:#ebeb34; " }}
-                        @elseif($tugas->tanggal < date('Y-m-d'))
-                             {{ " style = background-color:#eb5334; " }}
-                        @elseif($tugas->tanggal > date('Y-m-d'))
-                             {{ " style = background-color:#59eb34; " }}
-                        @endif
-                >
-                    <td class='text-center'>{{$tugas->nama}}</td>
-                    <td class='text-center'>{{date('d M Y', strtotime($tugas->tanggal))}}</td>
-                    <td class='text-center'>{{$tugas->jam}}</td>
-                    <td class='text-center'>
-                        <input type='checkbox' 
-                            @if ($tugas->checked >= 1)  
-                                {{'checked'}}  
-                            @else 
-                                {{'none'}} 
-                            @endif 
-                        onclick='return false;' ></td>
-                    <td class='text-center'>
-                        <form style="display:inline" action="/modif" method="post">
-                            @csrf
-                            <input type="hidden" name="id" value={{$tugas->id}}>
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                        </form>
-                        <form style="display:inline" action="/task/{{$tugas->id}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </style=>
-                @endforeach
-            </table>
-            </div>
-        </div>
-    </div>
+    </nav> -->
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

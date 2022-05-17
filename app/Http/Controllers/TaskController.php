@@ -21,13 +21,13 @@ class TaskController extends Controller
         $jam = date('H');
 
         if( $jam > 5 && $jam < 12 ){
-            $waktu =  'pagi';
+            $waktu =  'morning';
         }else if ($jam > 11 && $jam < 15){
-            $waktu =  'siang';
+            $waktu =  'afternoon';
         }else if ($jam > 14 && $jam < 18){
-            $waktu =  'sore';
+            $waktu =  'evening';
         }else if ( $jam > 17 && $jam > 6){
-            $waktu =  'malam';
+            $waktu =  'night';
         };
 
         return view('index', [
