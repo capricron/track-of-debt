@@ -20,7 +20,7 @@
                 <a href="" class="navbar-image">
                     <img src="pp.png" alt="/" class="responsive">
                 </a>
-                <h1>Track of Debts</h1>
+                <h1>Track of D  ebts</h1>
             </div>
             <div class="logout-container" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -92,12 +92,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="" id="modal-date">Date: <span></span></div>
-                        <div class="" id="modal-deskripsi">Description: <span></span></div>
-                        <div class="" id="modal-total">Total loan: <span></span></div>
-                        <div class="" id="modal-contact">Phone number: <span></span></div>
-                        <div class="" id="modal-number">ID number: <span></span></div>
-                        <div class="" id="modal-address">Address: <span></span></div>
+                        <div class="" id="modal-date">Date:<span></span></div>
+                        <div class="" id="modal-deskripsi">Description:<span></span></div>
+                        <div class="" id="modal-total">Total loan:<span></span></div>
+                        <div class="" id="modal-contact">Phone number:<span></span></div>
+                        <div class="" id="modal-number">ID number:<span></span></div>
+                        <div class="" id="modal-address">Address:<span></span></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
