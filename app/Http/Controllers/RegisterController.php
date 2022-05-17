@@ -22,7 +22,7 @@ class RegisterController extends Controller
         // return $validate;
         User::create($validate);
 
-        $request->session()->flash('success', 'Berhasil mendaftar silahkan login');
+        $request->session()->flash('success', 'Successfully registered');
 
         return redirect('/login');
     }

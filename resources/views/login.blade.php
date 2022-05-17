@@ -24,6 +24,14 @@
             {{ session('loginError') }}
           </div>
         @endif
+        @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ session('success') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
         <form class="text-center login" action="/login" method="post">
           @csrf
           <input class="no-outline" type="text" name="username" placeholder="username" require>
@@ -38,46 +46,9 @@
         <a class="text-center" href="/register">
           <p>Belum Punya Akun?</p>
         </a>
-        @if(session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ session('success') }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
       </div>
     </div>
-   
 
-
-    <!-- <div class="gambar container text-center">
-    <img src="../pp.png" alt="" srcset="" class="text-center">
-    </div>
-    <div class="form">
-        <h1 class="text-center">Login Dulu Bos</h1>
-        <a class="text-center" href="/register">
-          <p>Belum Punya Akun?</p>
-        </a>
-        @if(session()->has('success'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>{{ {{$message}} }}</strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
-        <form class="text-center login" action="/login" method="post">
-          @csrf
-          <input class="no-outline" type="text" name="username" placeholder="username" require>
-          <br>
-          <br>
-          <input type="password" class="no-outline" name="password" placeholder="password" require>
-          <br>
-          <br>
-          <button class="submit" name="submit" type="submit" >Login</button>
-        </form>
-    </div> -->
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

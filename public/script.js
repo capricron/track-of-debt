@@ -74,6 +74,5 @@ function modal(id){
     axios.get(`/task/${id}`, id).then(function (response) {
         title.innerHTML = response.data.nama;
         console.log(response.data);
-        desk.innerHTML = response.data.deskripsi;
     })
 }

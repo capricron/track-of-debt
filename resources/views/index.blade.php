@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
-    <title>Pantau Tugas</title>
+    <title>Track of Debts</title>
   </head>
   <body>
     <nav class="navbar-parent">
@@ -54,28 +54,34 @@
     </div>
     <div class="below">
         <div class="task-info">
-            <h1>Task Info</h1>
+            <h1>Debt Info</h1>
             <div class="task-info-content">
                 
                 <div class="info">
                     <div class="merah"></div>
-                    <p>Skipped task</p>
+                    <p>Skipped Debt</p>
                 </div>
                 <div class="info">
                     <div class="kuning"></div>
-                    <p>Today task</p>
+                    <p>Today Debt</p>
                 </div>
                 <div class="info">
                     <div class="hijau"></div>
-                    <p>Next task</p>
+                    <p>Next Debt</p>
+                </div>
+                <div class="info">
+                    <div class="lunas">
+                        <i class="fa-solid fa-money-bill-1-wave"></i>
+                    </div>
+                    <p>Paid Off</p>
                 </div>
             </div>
         </div>
         <div class="active-task">
             <div class="header-active-task">
-                <h1>Active Task</h1>
+                <h1>Your Debt</h1>
                 <a href="/create" class="add-task">
-                    <p>+ Add Task</p>
+                    <p>+ Add Debt</p>
                 </a>
             </div>
 
@@ -86,7 +92,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <h5 id="modal-title" id="exampleModalLongTitle"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -107,17 +113,16 @@
                 </div>
             </div>
             {{-- Modal --}}
-            <div class="task-list"> 
-            @empty($debts){
-                <h3>You don't have any tasks</h3>
-            }
-            @endforelse
+            <div class="task-list">
             
-            @foreach($debts as $utang)
+            @forelse($debts as $utang)
             <div class="task">
-                <div data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})" class="task-progress" >     
+                <div class="task-progress" >     
+                    @if($utang->checked == 1)
+                        <i class="fa-solid fa-money-bill-1-wave"></i>
+                    @else
                     <div id='status-{{$utang->id}}' class="status"
-                        @if(($utang->checked >= 1) || ($utang->tanggal > date('Y-m-d')) )
+                        @if(($utang->tanggal > date('Y-m-d')) )
                              {{ " style = background-color:#59eb34; " }}
                         @elseif($utang->tanggal < date('Y-m-d'))
                              {{ " style = background-color:#eb5334; " }}
@@ -125,22 +130,25 @@
                              {{ " style = background-color:#ebeb34; " }}
                         @endif
                     ></div>
-                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                    @endif
                     <br>
                     <h4>{{$utang->nama}}</h4>
                     <p>Date: {{date('d M Y', strtotime($utang->tanggal))}}</p>
-                    <p>Time: {{$utang->jam}}</p>
+                    <p>Total: Rp. {{$utang->jumlah}}</p>
+                    <p>Apakah sudah lunas?
                     <input id="check {{$utang->id}}" type='checkbox' 
                             @if ($utang->checked >= 1)  
                                 {{'checked'}}
                             @endif 
-                        onclick='cek({{$utang->id}})'>
+                    onclick='cek({{$utang->id}})'>
+                    </p>
                     <div class="button">
                         <form action="/modif" method="post">
                             @csrf
                             <input type="hidden" name="id" value={{$utang->id}}>
                             <button type="submit" class="button-edit">Edit</button>
                         </form>
+                        <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
                         <form action="/task/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
@@ -149,7 +157,9 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+                <h3>You don't have any debt</h3>
+            @endforelse
             </div>
         </div>
     </div>
