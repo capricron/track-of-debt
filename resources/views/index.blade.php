@@ -16,13 +16,23 @@
             <a href="" class="navbar-image">
                 <img src="pp.png" alt="/" class="responsive">
             </a>
-            <div class="logout">
-                        <h2>{{auth()->user()->username}}</h2>
+            <div class="logout-container" id="mySidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="logout">
+                            <h2>{{auth()->user()->username}}</h2>
 
-                        <a href="logout.php">
-                            <p>Log Out</p>
-                        </a>
+                            <a href="logout.php">
+                                Log Out
+                            </a>
+                </div>
             </div>
+            <div class="logoutDesktop">
+                            <h5>{{auth()->user()->username}}</h5>
+
+                            <a href="logout.php">
+                                <p>Log Out</p>
+                            </a>
+                </div>
             <span class="hamburger" style="font-size:30px;cursor:pointer;color:#fff" onclick="openNav()">&#9776;</span>
         </div>
     </nav>
@@ -36,6 +46,7 @@
         <div class="task-info">
             <h1>Task Info</h1>
             <div class="task-info-content">
+                
                 <div class="info">
                     <div class="merah"></div>
                     <p>Skipped task</p>
@@ -57,10 +68,14 @@
                     <p>+ Add Task</p>
                 </a>
             </div>
-            <div class="task-list">
+            <div class="task-list"> 
+            @empty($tasks){
+                <h3>You don't have any tasks</h3>
+            }
+            @endforelse
             @foreach($tasks as $tugas)
             <div class="task">
-                <div class="task-progress">
+                <div id="mentu" class="task-progress">
                     <div class="status"
                         @if($tugas->tanggal == date('Y-m-d'))
                              {{ " style = background-color:#ebeb34; " }}

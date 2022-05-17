@@ -16,6 +16,11 @@
    </head>
 
   <body>
+    <div class="parent">
+      <div class="container-card">
+      <img src="../pp.png" alt="" class="responsive">
+      </div>
+    </div>
     <div class="gambar container text-center">
     <img src="../pp.png" alt="" srcset="" class="text-center">
     </div>

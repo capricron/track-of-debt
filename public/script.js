@@ -20,3 +20,11 @@ if(window.innerWidth > 1000){
     kanan.style.position = 'absolute';
     kanan.style.right = '0';
 }
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "50%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
