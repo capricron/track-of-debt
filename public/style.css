@@ -121,6 +121,7 @@ opacity: 1
              0px 0px 32px #ffffff; */
 }
 .task-info h1{
+    font-size: 32px;
     font-weight: 700;
 }
 .task-info-content{
@@ -168,9 +169,11 @@ opacity: 1
     grid-template-columns: auto auto;
     place-items: center;
     margin-bottom: 16px;
+    /* column-gap: 100px; */
 }
 .active-task h1{
     font-weight: 700;
+    font-size: 32px;
     margin-right: 30px;
 }
 .add-task{
