@@ -17,21 +17,7 @@ class DebtController extends Controller
      */
     public function index()
     {
-        date_default_timezone_set('Asia/Jakarta');
-        $jam = date('H');
-
-        if( $jam > 5 && $jam < 12 ){
-            $waktu =  'morning';
-        }else if ($jam > 11 && $jam < 15){
-            $waktu =  'afternoon';
-        }else if ($jam > 14 && $jam < 18){
-            $waktu =  'evening';
-        }else if ( $jam > 17 && $jam > 6){
-            $waktu =  'night';
-        };
-
         return view('index', [
-            'waktu' => $waktu,
             'debts' => Debt::where('user_id', auth()->id())->orderBy('tanggal', 'asc')->get(),
         ]);
     }
