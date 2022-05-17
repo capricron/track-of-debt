@@ -1,3 +1,31 @@
+body{
+    background: #3d71de;
+}
+
+.responsive{
+    height: auto;
+    width: 100%;
+}
+.parent{
+    padding: 32px;
+}
+.container-card{
+    display: grid;
+    grid-template-columns: auto;
+    place-items: center;
+    padding: 32px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.container-card img{
+    border-radius: 50%;
+    width: 200px;
+    height: auto;
+}
 /* body{
     color: white;
     background-color: #1E1B1B;
