@@ -69,5 +69,16 @@ function modal(id){
     //     document.getElementById("modal-body").innerHTML = response.data.body;
     //     document.getElementById("modal-footer").innerHTML = response.data.footer;
     // })
-    console.log(`modal ${id}`);
+    const title =  document.getElementById("modal-title")
+    const body = document.getElementById("modal-body")
+    axios.get(`/task/${id}`, id).then(function (response) {
+        title.innerHTML = response.data.nama;
+        console.log(response.data);
+        body.innerHTML = `
+            <li>${response.data.deskripsi}</li> 
+            <li>${response.data.tanggal}</li> 
+            <li>${response.data.alamat}</li>
+            <li>${response.data.jumlah}</li>
+        `;
+    })
 }

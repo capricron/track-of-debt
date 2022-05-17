@@ -63,9 +63,9 @@ class DebtController extends Controller
      * @param  \App\Models\Debt  $Debt
      * @return \Illuminate\Http\Response
      */
-    public function show(Debt $Debt)
+    public function show($id)
     {
-        //
+        return Debt::find($id);
     }
 
     /**
