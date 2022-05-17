@@ -21,6 +21,15 @@ if(window.innerWidth > 1000){
     kanan.style.right = '0';
 }
 
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "50%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 function cek(id){
     axios.put(`/modif/${id}`,{
         id,
@@ -32,3 +41,4 @@ function cek(id){
         console.log(error);
     });
 }
+
