@@ -20,6 +20,14 @@
       <div class="container-card">
         <img src="../pp.png" alt="" class="responsive">
         <h2>Register</h2>
+        @if ($errors->any())
+          <div class="alert alert-danger">
+              @foreach ($errors->all() as $error)
+                {{ $error }}
+              @endforeach
+          </div>
+        @endif
+
         <form class="text-center login" action="/register" method="post">
             @csrf
           <input class="no-outline" type="text" name="username" placeholder="username" required>

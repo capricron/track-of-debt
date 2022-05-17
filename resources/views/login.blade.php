@@ -20,6 +20,11 @@
       <div class="container-card">
         <img src="../pp.png" alt="" class="responsive">
         <h2>Login</h2>
+        @if(session()->has('loginError'))
+          <div class="alert alert-danger">
+            {{ session('loginError') }}
+          </div>
+        @endif
         <form class="text-center login" action="/login" method="post">
           @csrf
           <input class="no-outline" type="text" name="username" placeholder="username" require>
