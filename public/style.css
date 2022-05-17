@@ -34,6 +34,11 @@ opacity: 1
     display: block;
     align-items: center;
 }
+.app-name{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
 .hamburger{
     display: block;
 }
@@ -163,6 +168,17 @@ opacity: 1
     background-color:  #12fc54;
     border-radius: 50%;
     margin-top: -10px;
+}
+.modal-body{
+    font-weight: bold;
+}
+.modal-body span{
+    font-weight: 300;
+    color: #666666;
+}
+.modal-body div{
+    display: flex;
+    flex-direction: column;
 }
 .header-active-task{
     display: grid;

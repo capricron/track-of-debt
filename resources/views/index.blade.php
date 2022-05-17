@@ -16,10 +16,12 @@
   <body>
     <nav class="navbar-parent">
         <div class="navbar-container">
-            <a href="" class="navbar-image">
-                <img src="pp.png" alt="/" class="responsive">
-            </a>
-            <h1>Track of debts</h1>
+            <div class="app-name">
+                <a href="" class="navbar-image">
+                    <img src="pp.png" alt="/" class="responsive">
+                </a>
+                <h1>Track of Debts</h1>
+            </div>
             <div class="logout-container" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="logout">
@@ -84,15 +86,18 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 id="modal-title" id="exampleModalLongTitle">
-                        
-                        </h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div id="modal-body">
-                        <h2 id="modal-deskripsi">Deskripsi <span></span> </h2>
+                    <div class="modal-body">
+                        <div class="" id="modal-date">Date: <span></span></div>
+                        <div class="" id="modal-deskripsi">Description: <span></span></div>
+                        <div class="" id="modal-total">Total loan: <span></span></div>
+                        <div class="" id="modal-contact">Phone number: <span></span></div>
+                        <div class="" id="modal-number">ID number: <span></span></div>
+                        <div class="" id="modal-address">Address: <span></span></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
