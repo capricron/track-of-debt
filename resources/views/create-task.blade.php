@@ -18,14 +18,40 @@
   <body>
     <div class="parent">
       <div class="container-card">
-       <img src="../pp.png" alt="" class="responsive">
-       <h1>Tambah Tugas</h1>
+        <a href="/"><i class="arrow left"></i></a>
+        <h1>Create new task</h1>
+        <form class="text-center login" action="/task" method="post">
+          @csrf
+          <input class="no-outline" type="text" name="nama" placeholder="Nama Tugas" required>
+          <br>
+          <br>
+          <input type="date" class="no-outline" name="tanggal" placeholder="dd-mm-yyyy" required>
+       
       </div>
     </div>
+    <div class="content">
+      <div class="content-create">
+          <input class="no-outline" type="text" name="deskripsi" placeholder="Deskripsi" required>
+          <br>
+          <br>
+          <input class="no-outline" type="number" name="jumlah" placeholder="Jumlah Hutang" required>
+          <br>
+          <br>
+          <input class="no-outline" type="number" name="no-ktp" placeholder="Masukan No KTP" required>
+          <br>
+          <br>
+          <input class="no-outline" type="text" name="alamat" placeholder="Masukan Alamat" required>
+          <br>
+          <br>
+          <button class="submit" name="submit" type="submit" >Tambah</button>
+        </form>
+      </div>
+    </div>
+  </body>
 
 
 
-    <div class="gambar container text-center">
+    <!-- <div class="gambar container text-center">
     <img src="../pp.png" alt="" srcset="" class="text-center">
     </div>
     <div class="form">
@@ -53,7 +79,7 @@
           <button class="submit" name="submit" type="submit" >Tambah</button>
 
         </form>
-    </div>
+    </div> -->
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
