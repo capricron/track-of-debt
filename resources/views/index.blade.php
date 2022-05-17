@@ -18,13 +18,13 @@
             </a>
             <div class="logout">
                         <h2>{{auth()->user()->username}}</h2>
-
-                        <a href="logout.php">
-                            <p>Log Out</p>
-                        </a>
             </div>
             <span class="hamburger" style="font-size:30px;cursor:pointer;color:#fff" onclick="openNav()">&#9776;</span>
         </div>
+        <form action="/logout" method="post">
+            @csrf
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
     </nav>
     <div class="content">
         <div class="greet">
@@ -60,7 +60,7 @@
             <div class="task-list">
             @foreach($tasks as $tugas)
             <div class="task">
-                <div class="task-progress">
+                <div id="mentu" class="task-progress">
                     <div class="status"
                         @if($tugas->tanggal == date('Y-m-d'))
                              {{ " style = background-color:#ebeb34; " }}
