@@ -21,13 +21,17 @@ use App\Http\Controllers\{
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::resource('/task', TaskController::class)->middleware('login');
-Route::resource('/', TaskController::class)->middleware('login');
-
-Route::post('/modif', [TaskController::class, 'modif']);
+Route::group(['middleware' => 'login'], function () {
+    Route::resource('/task', TaskController::class);
+    Route::resource('/', TaskController::class);
+    Route::get('/logout', [LoginController::class, 'logout']);
+    Route::post('/modif', [TaskController::class, 'modif']);
+    Route::put('/modif/{id}', [TaskController::class, 'checked']);
+});
 
 Route::get('/login', [LoginController::class, "index"]);
 Route::post('/login', [LoginController::class, "authenticate"]);
+Route::post('/logout', [LoginController::class, "logout"]);
 
 Route::post('/register', [RegisterController::class, "store"]);
 Route::get('/register', [RegisterController::class, "index"]);

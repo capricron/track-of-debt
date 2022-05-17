@@ -92,6 +92,15 @@ class TaskController extends Controller
         ]);
     }
 
+    
+    public function checked(Request $request)
+    {
+        // return $request->check;
+        $task = Task::find($request->id);
+        $task->checked = $request->check;
+        $task->save();
+    }
+
     /**
      * Update the specified resource in storage.
      *
