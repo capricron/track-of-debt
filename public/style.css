@@ -195,12 +195,12 @@ opacity: 1
     }
     .hamburger{
         display: none;
-    }
+    } 
     .task-info-content{
-        margin: 0;
         display: grid;
         grid-template-columns: auto;
         padding: 48px;
+        margin-top: 30px;
         border-radius: 50px;
         background: #e0e0e0;
         box-shadow:  20px 20px 32px #b3b3b3,
