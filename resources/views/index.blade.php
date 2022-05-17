@@ -16,15 +16,16 @@
             <a href="" class="navbar-image">
                 <img src="pp.png" alt="/" class="responsive">
             </a>
-            
+
             <div class="logout-container" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="logout">
                             <h2>{{auth()->user()->username}}</h2>
 
-                            <a href="logout.php">
-                                Log Out
-                            </a>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
                 </div>
 
             </div>
@@ -37,10 +38,7 @@
                 </div>
             <span class="hamburger" style="font-size:30px;cursor:pointer;color:#fff" onclick="openNav()">&#9776;</span>
         </div>
-        <form action="/logout" method="post">
-            @csrf
-            <button type="submit" class="btn btn-primary">Logout</button>
-        </form>
+        
     </nav>
     <div class="content">
         <div class="greet">
