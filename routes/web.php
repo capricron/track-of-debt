@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     DebtController,
     LoginController,
+    MbuhController,
     RegisterController,
 };
 
@@ -28,6 +29,8 @@ Route::group(['middleware' => 'login'], function () {
     Route::get('/logout', [LoginController::class, 'logout']);
     Route::post('/modif', [DebtController::class, 'modif']);
     Route::put('/modif/{id}', [DebtController::class, 'checked']);
+    Route::put('/update/{id}', [MbuhController::class, 'updates']);
+    Route::delete('/delete/{id}', [MbuhController::class, 'destroy']);
 });
 
 Route::get('/login', [LoginController::class, "index"]);

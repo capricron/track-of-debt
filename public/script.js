@@ -1,3 +1,11 @@
+function openNav() {
+  document.getElementById("mySidenav").style.width = "50%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 const time = () => {
     let time  = new Date();
     let hour = time.getHours();
@@ -35,17 +43,6 @@ setInterval(() => {
     time();
 }, 1000);
 
-function openNav() {
-  document.getElementById("mySidenav").style.width = "50%";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
-
-function ngetest(id){
-    console.log(`test ${id}`);
-}
 
 function cek(id){
     axios.put(`/modif/${id}`,{

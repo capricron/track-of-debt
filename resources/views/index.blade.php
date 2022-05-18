@@ -149,9 +149,10 @@
                             <button type="submit" class="button-edit">Edit</button>
                         </form>
                         <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
-                        <form action="/task/{{$utang->id}}" method="post">
+                        <form action="/delete/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
+                            <input type="hidden" name="id" value="{{$utang->id}}">
                             <button type="submit" class="button-delete">Delete</button>
                         </form>
                     </div>

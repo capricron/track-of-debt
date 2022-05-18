@@ -99,25 +99,9 @@ class DebtController extends Controller
      * @param  \App\Models\Debt  $Debt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Debt $Debt)
+    public function update(Request $request)
     {
-        $validate = $request->validate([
-            'nama' => 'required',
-            'tanggal' => 'required',
-            'jam' => 'required',
-        ]);
-
-        if($request->check == 'on'){
-            $validate['checked'] = 1;
-        }else{
-            $validate['checked'] = 0;
-        }
-
-        $validate['user_id'] = auth()->id();
-
-        $Debt->update($validate);
-
-        return redirect('/')->with('success', 'Berhasil mengubah Debt');
+        //
     }
 
     /**
@@ -126,9 +110,13 @@ class DebtController extends Controller
      * @param  \App\Models\Debt  $Debt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Debt $Debt)
+    public function destroy(Request $request)
     {
-        $Debt->delete();
+        return $request->all();
+        // Debt::destroy($request->id);
+        $debt = Debt::find('id',$request->id);
+        return $debt->get();
+
         return redirect('/')->with('success', 'Berhasil menghapus Debt');
     }
 }
