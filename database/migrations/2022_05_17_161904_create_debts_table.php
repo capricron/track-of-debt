@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->integer('jumlah');
             $table->string('deskripsi');
-            $table->addColumn('integer', 'noKtp', ['length' => 21]);
+            $table->bigInteger('noKtp');
             $table->integer('phone');
             $table->timestamps();
         });

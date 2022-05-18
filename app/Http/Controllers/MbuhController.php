@@ -15,7 +15,7 @@ class MbuhController extends Controller
             'nama' => 'required',
             'tanggal' => 'required',
             'jumlah' => 'required',
-            'noKtp' => 'required|max:21',
+            'noKtp' => 'required|max:16',
             'phone' => 'required',
             'deskripsi' => 'required',
             'alamat' => 'required',
