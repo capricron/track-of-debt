@@ -31,7 +31,7 @@
     </div>
     <div class="content">
       <div class="content-create">
-          <input  style="color:black" class="no-outline" type="text" name="deskripsi" placeholder="Description" required>>
+          <input  style="color:black" class="no-outline" type="text" name="deskripsi" placeholder="Description" required>
           <br>
           <br>
           <input class="no-outline" type="number" name="jumlah" placeholder="Total loan" required>
