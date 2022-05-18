@@ -20,10 +20,10 @@
                 <a href="" class="navbar-image">
                     <img src="pp.png" alt="/" class="responsive">
                 </a>
-                <h1>Track of D  ebts</h1>
+                <h1>Track of Debts</h1>
             </div>
             <div class="logout-container" id="mySidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="logout">
                             <h2>{{auth()->user()->username}}</h2>
 
@@ -32,7 +32,6 @@
                                 <button type="submit" class="btn btn-primary">Logout</button>
                             </form>
                 </div>
-
             </div>
             <div class="logoutDesktop">
                             <h5>{{auth()->user()->username}}</h5>
@@ -148,7 +147,7 @@
                             <input type="hidden" name="id" value={{$utang->id}}>
                             <button type="submit" class="button-edit">Edit</button>
                         </form>
-                        <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
+                        <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="button-detail">Detail</button>
                         <form action="/task/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
