@@ -258,16 +258,50 @@ opacity: 1
     float: left;
     border-radius: 50%;
 }
+.verified{
+    display: flex;
+    flex-direction: row;
+}
+label{
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.task-progress input{ position:-ms-page; transform: scale(0);}
+
+.task-progress input:checked ~ .checkbox {
+    transform: rotate(45deg);
+    width: 10px;
+    margin-left: 16px;
+    border-color: #24c78e;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+}
+.checkbox{
+    display: block;
+    width: inherit;
+    height: inherit;
+    border: 3px solid #434343;
+    border-radius: 6px;
+    transition: all 0.375s;
+}
 .button{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 12px;
 }
+.button-right{
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
 .button-edit{
     background: #3a668b;
     border: none;
-    padding: 4px 8px;
+    padding: 8px 16px;
     border-radius: 8px;
     color: #fff;
 }
@@ -277,12 +311,11 @@ opacity: 1
     border-radius: 8px;
     background: #ff4c29;
     color: #fff;
-    
 }
 .button-delete{
     background: rgb(211, 0, 0);
     border: none;
-    padding: 4px 8px;
+    padding: 8px 16px;
     border-radius: 8px;  
     color: white;  
 }
@@ -375,6 +408,10 @@ opacity: 1
     }
     .logoutDesktop p{
         margin-bottom: 8px;
+    }
+    .app-name {
+        display: flex;
+        align-items: center;
     }
     .app-name h2{
         display: contents;

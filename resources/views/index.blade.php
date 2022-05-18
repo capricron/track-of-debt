@@ -135,27 +135,35 @@
                     <h4>{{$utang->nama}}</h4>
                     <p>Date: {{date('d M Y', strtotime($utang->tanggal))}}</p>
                     <p>Total: Rp. {{$utang->jumlah}}</p>
-                    <p>Apakah sudah lunas?
-                    <input id="check {{$utang->id}}" type='checkbox' 
-                            @if ($utang->checked >= 1)  
-                                {{'checked'}}
-                            @endif 
-                    onclick='cek({{$utang->id}})'>
-                    </p>
+                    <div class="verified">
+                        <p>Apakah sudah lunas?
+                        <label>
+                        <input id="check {{$utang->id}}" type='checkbox' 
+                                @if ($utang->checked >= 1)  
+                                    {{'checked'}}
+                                @endif 
+                        onclick='cek({{$utang->id}})'>
+                        <span class="checkbox">
+                        </span>
+                        <label>
+                        </p>
+                    </div>
                     <div class="button">
                         <form action="/modif" method="post">
                             @csrf
                             <input type="hidden" name="id" value={{$utang->id}}>
                             <button type="submit" class="button-edit">Edit</button>
                         </form>
-                        <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
-                        <form action="/delete/{{$utang->id}}" method="post">
-                        <form action="/task/{{$utang->id}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <input type="hidden" name="id" value="{{$utang->id}}">
-                            <button type="submit" class="button-delete">Delete</button>
-                        </form>
+                        <div class="button-right">
+                            <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
+                            <form action="/delete/{{$utang->id}}" method="post">
+                            <form action="/task/{{$utang->id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="id" value="{{$utang->id}}">
+                                <button type="submit" class="button-delete">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
