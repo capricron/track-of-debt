@@ -46,7 +46,7 @@ class DebtController extends Controller
             'tanggal' => 'required',
             'jumlah' => 'required',
             'noKtp' => 'required|max:16',
-            'phone' => 'required|max:12',
+            'phone' => 'required|max:11',
             'deskripsi' => 'required',
             'alamat' => 'required',
         ]);
