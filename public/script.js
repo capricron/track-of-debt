@@ -68,8 +68,16 @@ function modal(id){
     // })
     const title =  document.getElementById("modal-title")
     const desk = document.getElementById("modal-deskripsi").childNodes[1];
+    const total = document.getElementById("modal-total").childNodes[1];
+    const contact = document.getElementById("modal-contact").childNodes[1];
+    const number = document.getElementById("modal-number").childNodes[1];
+    const address = document.getElementById("modal-address").childNodes[1];
     axios.get(`/task/${id}`, id).then(function (response) {
         title.innerHTML = response.data.nama;
-        console.log(response.data);
+        desk.innerHTML = response.data.deskripsi;
+        total.innerHTML = response.data.jumlah;
+        contact.innerHTML = response.data.phone;
+        number.innerHTML = response.data.noKtp;
+        address.innerHTML = response.data.alamat
     })
 }

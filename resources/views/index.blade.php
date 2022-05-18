@@ -20,7 +20,7 @@
                 <a href="" class="navbar-image">
                     <img src="pp.png" alt="/" class="responsive">
                 </a>
-                <h1>Track of Debts</h1>
+                <h2>Track of Debts</h2>
             </div>
             <div class="logout-container" id="mySidenav">
              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -149,7 +149,6 @@
                         </form>
                         <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
                         <form action="/delete/{{$utang->id}}" method="post">
-                        <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="button-detail">Detail</button>
                         <form action="/task/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
