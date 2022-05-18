@@ -81,3 +81,4 @@ function modal(id){
         address.innerHTML = response.data.alamat
     })
 }
+
