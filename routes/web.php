@@ -21,6 +21,7 @@ use App\Http\Controllers\{
 // Route::get('/', function () {
 //     return view('index');
 // });
+
 Route::group(['middleware' => 'login'], function () {
     Route::resource('/task', DebtController::class);
     Route::resource('/', DebtController::class);

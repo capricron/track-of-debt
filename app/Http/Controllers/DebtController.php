@@ -40,13 +40,14 @@ class DebtController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $validate = $request->validate([
             'nama' => 'required',
             'tanggal' => 'required',
-            'deskripsi' => 'required',
             'jumlah' => 'required',
-            'no-ktp' => 'required',
+            'noKtp' => 'required',
+            'phone' => 'required',
+            'deskripsi' => 'required',
             'alamat' => 'required',
         ]);
 
@@ -77,7 +78,7 @@ class DebtController extends Controller
     public function modif(Request $request)
     {
         $Debt = Debt::find($request->id);
-        return view('modif-Debt', [
+        return view('modif-debt', [
             'debt' => $Debt,
         ]);
     }

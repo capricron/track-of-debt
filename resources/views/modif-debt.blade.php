@@ -19,26 +19,26 @@
     <div class="parent">
       <div class="container-card">
         <a href="/"><i class="arrow left"></i></a>
-        <h1>Create new debt</h1>
+        <h1>Create new task</h1>
         <form class="text-center login" action="/task" method="post">
           @csrf
-          <input class="no-outline" type="text" name="nama" placeholder="Task name" required>
+          <input class="no-outline" type="text" name="nama" placeholder="Task name" required value={{$debt->nama}}>
           <br>
           <br>
-          <input type="date" class="no-outline" name="tanggal" placeholder="Due date" required>
+          <input type="date" class="no-outline" name="tanggal" placeholder="dd-mm-yyyy" required value={{$debt->tanggal}}>
        
       </div>
     </div>
     <div class="content">
       <div class="content-create">
-          <input  style="color:black" class="no-outline" type="text" name="deskripsi" placeholder="Description" required>>
+          <input style="color:black" class="no-outline" type="text" name="deskripsi" placeholder="Description" required value={{$debt->deskripsi}}>
           <br>
           <br>
-          <input class="no-outline" type="number" name="jumlah" placeholder="Total loan" required>
-          <input class="no-outline" type="number" name="phone" placeholder="Phone number" required>
-          <input class="no-outline" type="number" name="noKtp" placeholder="KTP number" required>
+          <input class="no-outline" type="number" name="jumlah" placeholder="Total loan" required  value={{$debt->jumlah}}>
+          <input class="no-outline" type="number" name="kontak" placeholder="Phone number" required value={{$debt->phone}}>
+          <input class="no-outline" type="number" name="noktp" placeholder="KTP number" required value={{$debt->noKtp}}>
           
-          <input style="color:black" class="no-outline" type="text" name="alamat" placeholder="Address" required>
+          <input style="color:black" class="no-outline" type="text" name="alamat" placeholder="Address" required  value={{$debt->alamat}}>
           <br>
           <br>
           <button class="submit" name="submit" type="submit" >Add</button>

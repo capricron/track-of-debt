@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
-    <title>Pantau Tugas</title>
+    <title>Track of Debts</title>
   </head>
   <body>
     <nav class="navbar-parent">
@@ -54,28 +54,34 @@
     </div>
     <div class="below">
         <div class="task-info">
-            <h1>Task Info</h1>
+            <h1>Debt Info</h1>
             <div class="task-info-content">
                 
                 <div class="info">
                     <div class="merah"></div>
-                    <p>Skipped task</p>
+                    <p>Skipped Debt</p>
                 </div>
                 <div class="info">
                     <div class="kuning"></div>
-                    <p>Today task</p>
+                    <p>Today Debt</p>
                 </div>
                 <div class="info">
                     <div class="hijau"></div>
-                    <p>Next task</p>
+                    <p>Next Debt</p>
+                </div>
+                <div class="info">
+                    <div class="lunas">
+                        <i class="fa-solid fa-money-bill-1-wave"></i>
+                    </div>
+                    <p>Paid Off</p>
                 </div>
             </div>
         </div>
         <div class="active-task">
             <div class="header-active-task">
-                <h1>Active Task</h1>
+                <h1>Your Debt</h1>
                 <a href="/create" class="add-task">
-                    <p>+ Add Task</p>
+                    <p>+ Add Debt</p>
                 </a>
             </div>
 
@@ -86,7 +92,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <h5 id="modal-title" id="exampleModalLongTitle"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -107,17 +113,16 @@
                 </div>
             </div>
             {{-- Modal --}}
-            <div class="task-list"> 
-            @empty($debts){
-                <h3>You don't have any tasks</h3>
-            }
-            @endforelse
+            <div class="task-list">
             
-            @foreach($debts as $utang)
+            @forelse($debts as $utang)
             <div class="task">
-                <div data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})" class="task-progress" >     
+                <div class="task-progress" >     
+                    @if($utang->checked == 1)
+                        <i class="fa-solid fa-money-bill-1-wave"></i>
+                    @else
                     <div id='status-{{$utang->id}}' class="status"
-                        @if(($utang->checked >= 1) || ($utang->tanggal > date('Y-m-d')) )
+                        @if(($utang->tanggal > date('Y-m-d')) )
                              {{ " style = background-color:#59eb34; " }}
                         @elseif($utang->tanggal < date('Y-m-d'))
                              {{ " style = background-color:#eb5334; " }}
@@ -125,22 +130,25 @@
                              {{ " style = background-color:#ebeb34; " }}
                         @endif
                     ></div>
-                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                    @endif
                     <br>
                     <h4>{{$utang->nama}}</h4>
                     <p>Date: {{date('d M Y', strtotime($utang->tanggal))}}</p>
-                    <p>Time: {{$utang->jam}}</p>
+                    <p>Total: Rp. {{$utang->jumlah}}</p>
+                    <p>Apakah sudah lunas?
                     <input id="check {{$utang->id}}" type='checkbox' 
                             @if ($utang->checked >= 1)  
                                 {{'checked'}}
                             @endif 
-                        onclick='cek({{$utang->id}})'>
+                    onclick='cek({{$utang->id}})'>
+                    </p>
                     <div class="button">
                         <form action="/modif" method="post">
                             @csrf
                             <input type="hidden" name="id" value={{$utang->id}}>
                             <button type="submit" class="button-edit">Edit</button>
                         </form>
+                        <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
                         <form action="/task/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
@@ -149,55 +157,24 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+                <h3>You don't have any debt</h3>
+            @endforelse
             </div>
         </div>
     </div>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="pp.png" alt="">
-                <span class="judul">Pantau Tugas</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div id="kanan">
-                    <a href="">
-                        <div class="wc add text-center">
-                            <a href="/create">
-                                <p>+ Add Tugas</p>
-                            </a>
-                        </div>
-                    </a>
-                    <div class="wc acc ">
-                        <h2>{{auth()->user()->username}}</h2>
-
-                        <a href="logout.php">
-                            <p>Log Out</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav> -->
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
- <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <script src="script.js"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    -->
   </body>
 </html>
