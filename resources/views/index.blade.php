@@ -20,12 +20,13 @@
                 <a href="" class="navbar-image">
                     <img src="pp.png" alt="/" class="responsive">
                 </a>
-                <h1>Track of Debts</h1>
+                <h1 class="app-heading-name">Track of Debts</h1>
             </div>
             <div class="logout-container" id="mySidenav">
              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="logout">
-                            <h2>{{auth()->user()->username}}</h2>
+                            <a href="/"><h7>Track of Debts</h7></a>
+                            <h6>Username: <br>{{auth()->user()->username}}</h6>
 
                             <form action="/logout" method="post">
                                 @csrf
@@ -52,30 +53,30 @@
         </div>
     </div>
     <div class="below">
-        <div class="task-info">
-            <h1>Debt Info</h1>
-            <div class="task-info-content">
-                
-                <div class="info">
-                    <div class="merah"></div>
-                    <p>Skipped Debt</p>
-                </div>
-                <div class="info">
-                    <div class="kuning"></div>
-                    <p>Today Debt</p>
-                </div>
-                <div class="info">
-                    <div class="hijau"></div>
-                    <p>Next Debt</p>
-                </div>
-                <div class="info">
-                    <div class="lunas">
-                        <i class="fa-solid fa-money-bill-1-wave"></i>
+            <div class="task-info">
+                <h1>Debt Info</h1>
+                <div class="task-info-content">
+                    
+                    <div class="info">
+                        <div class="merah"></div>
+                        <p>Skipped Debt</p>
                     </div>
-                    <p>Paid Off</p>
+                    <div class="info">
+                        <div class="kuning"></div>
+                        <p>Today Debt</p>
+                    </div>
+                    <div class="info">
+                        <div class="hijau"></div>
+                        <p>Next Debt</p>
+                    </div>
+                    <div class="info">
+                        <div class="lunas">
+                            <i class="fa-solid fa-money-bill-1-wave"></i>
+                        </div>
+                        <p>Paid Off</p>
+                    </div>
                 </div>
             </div>
-        </div>
         <div class="active-task">
             <div class="header-active-task">
                 <h1>Your Debt</h1>

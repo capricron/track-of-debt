@@ -73,3 +73,4 @@ function modal(id){
         console.log(response.data);
     })
 }
+
