@@ -20,7 +20,8 @@
                 <a href="" class="navbar-image">
                     <img src="pp.png" alt="/" class="responsive">
                 </a>
-                <h1 class="app-heading-name">Track of Debts</h1>
+                <h2 style="color :white">Track of Debts</h2>
+
             </div>
             <div class="logout-container" id="mySidenav">
              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -107,7 +108,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                     </div>
                 </div>
@@ -150,7 +150,6 @@
                         </form>
                         <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="btn btn-success">Detail</button>
                         <form action="/delete/{{$utang->id}}" method="post">
-                        <button data-toggle="modal" data-target="#exampleModalCenter" onclick="modal({{$utang->id}})"  type="button" class="button-detail">Detail</button>
                         <form action="/task/{{$utang->id}}" method="post">
                             @csrf
                             @method('DELETE')
