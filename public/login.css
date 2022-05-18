@@ -1,127 +1,141 @@
-body{
+body {
     background: #3d71de;
     height: 100vh;
 }
 
-.responsive{
+.responsive {
     height: auto;
     width: 100%;
 }
 
-.alert{
+.alert {
     width: 90% !important;
 }
 
-.close span{
+.close span {
     margin-top: -10px;
     position: absolute;
     right: 5px !important;
 }
 
-img{
+img {
     margin-top: 30px;
     width: 150px;
 }
 
-.parent{
+.parent {
     padding: 64px;
 }
-.container-card{
+
+.container-card {
     display: grid;
     grid-template-columns: auto;
     place-items: center;
     padding: 32px;
     row-gap: 30px;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.container-card img{
+
+.container-card img {
     border-radius: 50%;
     width: 100px;
     height: auto;
 }
-.container-card h2{
+
+.container-card h2 {
     color: #fff;
 }
+
 input {
     color: white;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: groove;
-    background: rgba( 255, 255, 255, 0.6 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 0px );
-    -webkit-backdrop-filter: blur( 0px );
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-input{
+input {
     height: auto;
     width: 100%;
     padding: 8px 16px;
 }
 
-button{
+button {
     border: none;
-    background: rgba( 93, 90, 234, 0.6 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 0px );
-    -webkit-backdrop-filter: blur( 0px );
+    background: rgba(93, 90, 234, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
     padding: 8px 32px;
     color: #fff;
 }
-button:hover{
+
+button:hover {
     transition: all 0.2s ease-in-out;
     color: black;
-    background: rgba( 255, 255, 255, 0.8 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 20px );
-    -webkit-backdrop-filter: blur( 20px );
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.line{
+
+.line {
     height: 1px;
     width: 50%;
     background: #fff;
 }
-.container-card a{
+
+.container-card a {
     color: #fff;
 }
+
 .no-outline:focus {
     outline: none;
 }
+
 @media screen and (min-width: 601px) {
-    .parent{
+    .parent {
         padding: 128px;
     }
-    .container-card{
+
+    .container-card {
         padding: 64px;
     }
-    .container-card img{
+
+    .container-card img {
         height: auto;
         width: 200px;
     }
 }
+
 @media screen and (min-width: 960px) {
-    .parent{
+    .parent {
         display: grid;
         place-items: center;
         padding: 64px;
     }
-    .container-card{
+
+    .container-card {
         width: 50%;
         height: auto;
     }
-    input{
+
+    input {
         width: 100%;
         margin-right: 150px;
     }
