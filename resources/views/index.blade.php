@@ -20,7 +20,7 @@
                 <a href="" class="navbar-image">
                     <img src="pp.png" alt="/" class="responsive">
                 </a>
-                <h2>Track of Debts</h2>
+                <h2 style="color :white">Track of Debts</h2>
 
             </div>
             <div class="logout-container" id="mySidenav">
